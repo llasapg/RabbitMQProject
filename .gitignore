@@ -1,0 +1,5 @@
+bin/
+obj/
+[Db]ebug/
+[Bb]uild/
+[Rr]elease/

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "qZKVivIHm58YbRf3wdzxZpP0Z5oEQw8oC9wS/9XFcqYxbdEZMnRWjJsYiLExTy0YsFlAU+ClqmbNmVNmNem9Tg==",
+  "success": true,
+  "projectFilePath": "/Users/llasapg/Desktop/RabbitProject/MicroRabbit.Domain.Core/MicroRabbit.Domain.Core.csproj",
+  "expectedPackageFiles": [
+    "/Users/llasapg/.nuget/packages/mediatr/8.0.1/mediatr.8.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

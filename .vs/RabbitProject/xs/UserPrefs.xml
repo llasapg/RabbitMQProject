@@ -1,0 +1,34 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="MicroRabbit.Domain.Core/Events/Event.cs">
+    <Files>
+      <File FileName="MicroRabbit.Domain.Core/Bus/IEventBus.cs" Line="22" Column="45" />
+      <File FileName="MicroRabbit.Domain.Core/Bus/IEventHandler.cs" Line="11" Column="28" />
+      <File FileName="MicroRabbit.Domain.Core/Commands/Command.cs" Line="13" Column="37" />
+      <File FileName="MicroRabbit.Domain.Core/Events/Message.cs" Line="12" Column="42" />
+      <File FileName="MicroRabbit.Domain.Core/Events/Event.cs" Line="4" Column="21" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="RabbitProject" expanded="True">
+            <Node name="Domain" expanded="True">
+              <Node name="MicroRabbit.Domain.Core" expanded="True">
+                <Node name="Bus" expanded="True" />
+                <Node name="Commands" expanded="True" />
+                <Node name="Events" expanded="True">
+                  <Node name="Event.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
