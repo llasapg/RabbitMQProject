@@ -1,11 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="MicroRabbit.Domain.Core/Events/Event.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MicroRabbit.Infra.Bus/RabbitMQBus.cs">
     <Files>
-      <File FileName="MicroRabbit.Domain.Core/Bus/IEventBus.cs" Line="22" Column="45" />
-      <File FileName="MicroRabbit.Domain.Core/Bus/IEventHandler.cs" Line="11" Column="28" />
-      <File FileName="MicroRabbit.Domain.Core/Commands/Command.cs" Line="13" Column="37" />
-      <File FileName="MicroRabbit.Domain.Core/Events/Message.cs" Line="12" Column="42" />
-      <File FileName="MicroRabbit.Domain.Core/Events/Event.cs" Line="4" Column="21" />
+      <File FileName="MicroRabbit.Domain.Core/Bus/IEventBus.cs" Line="9" Column="61" />
+      <File FileName="MicroRabbit.Domain.Core/Bus/IEventHandler.cs" Line="15" Column="6" />
+      <File FileName="MicroRabbit.Domain.Core/Commands/Command.cs" Line="14" Column="58" />
+      <File FileName="MicroRabbit.Domain.Core/Events/Message.cs" Line="10" Column="28" />
+      <File FileName="MicroRabbit.Domain.Core/Events/Event.cs" Line="9" Column="10" />
+      <File FileName="MicroRabbit.Infra.Bus/RabbitMQBus.cs" Line="27" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,9 +16,17 @@
               <Node name="MicroRabbit.Domain.Core" expanded="True">
                 <Node name="Bus" expanded="True" />
                 <Node name="Commands" expanded="True" />
-                <Node name="Events" expanded="True">
-                  <Node name="Event.cs" selected="True" />
+                <Node name="Events" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="Infra.Bus" expanded="True">
+              <Node name="MicroRabbit.Infra.Bus" expanded="True">
+                <Node name="Dependencies" expanded="True">
+                  <Node name="FrameworkReferences" expanded="True" />
+                  <Node name="PackageDependencies" expanded="True" />
+                  <Node name="ProjectDependencies" expanded="True" />
                 </Node>
+                <Node name="RabbitMQBus.cs" selected="True" />
               </Node>
             </Node>
           </Node>
