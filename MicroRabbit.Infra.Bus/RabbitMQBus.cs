@@ -10,6 +10,7 @@ using RabbitMQ.Client;
 using Newtonsoft.Json;
 using System.Linq;
 using RabbitMQ.Client.Events;
+using System.Diagnostics;
 
 namespace MicroRabbit.Infra.Bus
 {
@@ -18,13 +19,13 @@ namespace MicroRabbit.Infra.Bus
     /// </summary>
     public sealed class RabbitMQBus : IEventBus
     {
+        #region Helpers
         public RabbitMQBus(IMediator mediator)
         {
             _mediator = mediator;
             _handlers = new Dictionary<string, List<Type>>();
             _eventTypes = new List<Type>();
         }
-
         /// Related to the commands
         private readonly IMediator _mediator;
         /// <summary>
@@ -35,6 +36,7 @@ namespace MicroRabbit.Infra.Bus
         /// Collection for events only
         /// </summary>
         private readonly List<Type> _eventTypes;
+        #endregion
 
         /// <summary>
         /// Async request to a single handler
@@ -47,9 +49,14 @@ namespace MicroRabbit.Infra.Bus
             await _mediator.Send(command); // how it can identify where this command shoud be send
         }
 
-        /// Related to the events
-
-        public void Subscribe<T, TH>() where T : Event where TH : IEventHandler<T>
+        /// <summary>
+        /// Method to perform subscribing ( mapping between event and handler )
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TH"></typeparam>
+        public void Subscribe<T, TH>()
+            where T : Event
+            where TH : IEventHandler<T>
         {
             var eventName = typeof(T).Name; // will get full event name
             var handler = typeof(TH);
@@ -71,7 +78,7 @@ namespace MicroRabbit.Infra.Bus
 
             _handlers[eventName].Add(handler); // adding handler for the given event
 
-            // StartBasicConsume<T>();
+            BasicConsume<T>();
         }
 
         /// <summary>
@@ -111,8 +118,9 @@ namespace MicroRabbit.Infra.Bus
         /// Basic consumer for rabbitMQ
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        private async void BasicConsume<T>() where T : Event
+        private void BasicConsume<T>() where T : Event
         {
+            // connect to the rabbitMQ server
             var factory = new ConnectionFactory()
             {
                 HostName = "localhost",
@@ -131,62 +139,64 @@ namespace MicroRabbit.Infra.Bus
                 {
                     channel.QueueDeclare(queueName);
 
+                    // Use little bit different consumer for this purpose
                     var consumer = new AsyncEventingBasicConsumer(channel);
 
-                    consumer.Received += ConsumerReceived()
+                    consumer.Received += (sender, e) => ConsumerReceived(sender, e);
 
                     var result = consumer.Model.BasicConsume(queueName, true, consumer);
-
-                    //get the message body
-
-                    var messageBody = Encoding.UTF8.GetString(result);
                 }
             }
         }
 
-        //public delegate void ConsumerReceived(object sender, BasicDeliverEventArgs e);
-
+        /// <summary>
+        /// This method is used to handle any event in case of consiming from our queue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
         private async Task ConsumerReceived(object sender, BasicDeliverEventArgs e)
         {
             var eventName = e.RoutingKey; // eventName
 
             var message = Encoding.UTF8.GetString(e.Body.ToArray());
 
-            // event process
-
             try
             {
-                await ProcessEvent(eventName, message).ConfigureAwait(false);
+                await ProcessEvent(eventName, message).ConfigureAwait(false); // Dont matter wheser to use another task, or be executed in this context
             }
             catch(Exception ex)
             {
-
+                Trace.WriteLine($"Error occured - {ex.Message}");
             }
         }
 
         /// <summary>
-        /// todo - Check this stuff!!!!
+        /// This method is used to process event that was consumed from the queue
         /// </summary>
         /// <param name="eventName"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        private async Task ProcessEvent(string eventName, string message) // cool
+        private async Task ProcessEvent(string eventName, string message) // we pass eventName ( that can we use to get the handler name and message for the future process )
         {
-            if(!_handlers.ContainsKey(eventName))
+            if(!_handlers.ContainsKey(eventName)) // we check that we have this type of events and handlers for them
             {
-                var sub = _handlers[eventName];
-                foreach (var item in sub)
+                var handlers = _handlers[eventName];
+
+                foreach (var item in handlers)
                 {
-                    var handler = Activator.CreateInstance(item);
+                    var handler = Activator.CreateInstance(item); // this class is used for object creation ( Actiovator )
 
-                    if (handler == null) continue;
-                    var eventType = _eventTypes.SingleOrDefault(t => t.Name == eventName);
+                    if (handler == null)
+                    {
+                        var eventType = _eventTypes.SingleOrDefault(t => t.Name == eventName);
 
-                    var @event = JsonConvert.DeserializeObject(message, eventType);
+                        var @event = JsonConvert.DeserializeObject(message, eventType); // in this step we are creating object, that represents our event ( Deserealize to the given type of event )
 
-                    var concreteType = typeof(IEventHandler<>).MakeGenericType(eventType);
+                        var handlerType = typeof(IEventHandler<>).MakeGenericType(eventType); // we use this approach to get handler type with genetic
 
-                    await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { @event });
+                        await (Task)handlerType.GetMethod("Handle").Invoke(handler, new object[] { @event });
+                    }
                 }
             }
         }
