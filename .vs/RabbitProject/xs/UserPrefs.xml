@@ -1,26 +1,29 @@
-﻿<Properties>
-  <MonoDevelop.Ide.ItemProperties.Infra.IoC.MicroRabbit.Infra.IoC FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MicroRabbit.Infra.IoC/Class1.cs">
+﻿<Properties StartupConfiguration="{5D84FB00-DA21-4037-9272-B4B16E42BE12}|Default">
+  <MonoDevelop.Ide.ItemProperties.Microservices.Banking.Application.MicroRabbit.Banking.Application FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Microservices.Banking.Domain.MicroRabbit.Banking.Domain FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Microservices.Banking.Data.MicroRabbit.Banking.Data FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MicroRabbit.Banking.Domain/Class1.cs">
     <Files>
-      <File FileName="MicroRabbit.Domain.Core/Bus/IEventBus.cs" Line="9" Column="61" />
+      <File FileName="MicroRabbit.Domain.Core/Bus/IEventBus.cs" Line="6" Column="11" />
       <File FileName="MicroRabbit.Domain.Core/Bus/IEventHandler.cs" Line="12" Column="28" />
       <File FileName="MicroRabbit.Domain.Core/Commands/Command.cs" />
       <File FileName="MicroRabbit.Domain.Core/Events/Message.cs" />
       <File FileName="MicroRabbit.Domain.Core/Events/Event.cs" />
-      <File FileName="MicroRabbit.Infra.Bus/RabbitMQBus.cs" Line="198" Column="83" />
-      <File FileName="MicroRabbit.Infra.IoC/Class1.cs" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Infra.Bus/RabbitMQBus.cs" Line="13" Column="26" />
+      <File FileName="MicroRabbit.Banking.Api/Program.cs" Line="18" Column="1" />
+      <File FileName="MicroRabbit.Banking.Api/Startup.cs" Line="30" Column="1" />
+      <File FileName="MicroRabbit.Banking.Api/appsettings.json" Line="9" Column="16" />
+      <File FileName="MicroRabbit.Banking.Api/Controllers/WeatherForecastController.cs" Line="21" Column="10" />
+      <File FileName="MicroRabbit.Banking.Application/Class1.cs" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Banking.Data/Class1.cs" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Banking.Domain/Class1.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="RabbitProject" expanded="True">
-            <Node name="Infra.Bus" expanded="True">
-              <Node name="MicroRabbit.Infra.Bus" expanded="True" />
-            </Node>
-            <Node name="Infra.IoC" expanded="True">
-              <Node name="MicroRabbit.Infra.IoC" expanded="True">
-                <Node name="Class1.cs" selected="True" />
-              </Node>
+            <Node name="Microservices" expanded="True">
+              <Node name="Banking" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -28,9 +31,14 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>MicroRabbit.Infra.Bus/MicroRabbit.Infra.Bus.csproj</String>
+    <String>MicroRabbit.Infra.IoC/MicroRabbit.Infra.IoC.csproj</String>
+  </DisabledProjects>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Microservices.Banking.API.MicroRabbit.Banking.Api FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
