@@ -5,7 +5,8 @@ services:
     image: llasapg/rabbit-banking-api:latest
     restart: always
     ports:
-      - "5000:16596"
+      - "9000:9000"
+      - "8088:8088"
   bankingssql:
     image: mysql:8.0.17
     environment:

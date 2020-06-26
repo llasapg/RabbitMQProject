@@ -103,13 +103,13 @@ namespace MicroRabbit.Infra.Bus
                     // we use event name to create or to use same named queue
                     var eventName = @event.GetType().Name;
 
-                    channel.QueueDeclare(eventName); // !!!
+                    channel.QueueDeclare(eventName, false, false, false, null); // !!!
 
                     var message = JsonConvert.SerializeObject(@event);
 
                     var body = Encoding.UTF8.GetBytes(message.ToString());
 
-                    channel.BasicPublish("", eventName, false, null, body);
+                    channel.BasicPublish("", eventName, null, body);
                 }
             }
         }

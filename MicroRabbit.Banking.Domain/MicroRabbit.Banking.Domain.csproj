@@ -15,4 +15,7 @@
   <ItemGroup>
     <PackageReference Include="MediatR" Version="8.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MicroRabbit.Domain.Core\MicroRabbit.Domain.Core.csproj" />
+  </ItemGroup>
 </Project>

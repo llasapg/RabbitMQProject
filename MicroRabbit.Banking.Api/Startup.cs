@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR;
+using System;
 
 namespace MicroRabbit.Banking.Api
 {
@@ -25,7 +26,9 @@ namespace MicroRabbit.Banking.Api
         {
             services.AddDbContext<BankingContext>(opt => opt.UseMySql(Configuration.GetConnectionString("BankingDbConnection")));
 
-            services.AddMediatR(typeof(Startup));
+            var assembly = AppDomain.CurrentDomain.Load("MicroRabbit.Banking.Domain"); // this is assembly with handlers
+
+            services.AddMediatR(assembly);// we should connect use it
 
             services.AddControllers();
 
@@ -54,18 +57,18 @@ namespace MicroRabbit.Banking.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection(); // ?
-
-            app.UseRouting();
-
-            app.UseAuthorization();
+            //app.UseHttpsRedirection(); // ?
 
             app.UseSwagger();
 
             app.UseSwaggerUI(config => {
 
-                config.SwaggerEndpoint("swagger/v1/swagger.json", "Banking microservice");
+                config.SwaggerEndpoint("V1/swagger.json", "Banking microservice");
             });
+
+            app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

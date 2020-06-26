@@ -4,27 +4,27 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:22771",
-      "sslPort": 44337
+      "applicationUrl": "http://localhost:41892",
+      "sslPort": 44330
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "swagger/index.html",
+      "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "MicroRabbit.Banking.Api": {
+    "MicroRabbit.Transfer.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger/index.html",
+      "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:9000;http://localhost:8088"
+      "applicationUrl": "https://localhost:10933;http://localhost:37612"
     }
   }
 }
