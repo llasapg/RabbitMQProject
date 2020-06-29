@@ -1,16 +1,39 @@
 version: '3.7'
 
+volumes:
+  rabbit-volume:
+  sql-volume:
+
 services:
-  api:
-    image: llasapg/rabbit-banking-api:latest
+  banking-api:
+    image: llasapg/banking-api:latest
     restart: always
     ports:
       - "9000:9000"
-      - "8088:8088"
-  bankingssql:
+      - "8088:80"
+  transfer-api:
+    image: llasapg/transfer-api:latest
+    restart: always
+    ports:
+      - "9001:9001"
+      - "8089:80"
+  banking-sql:
     image: mysql:8.0.17
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: root
     ports:
     - "3309:3306"
+    volumes:
+    - type: volume
+      source: sql-volume
+      target: /var/lib/mysql
+  rabbit-server:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+    - type: volume
+      source: rabbit-volume
+      target: /var/log/rabbitmq

@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MicroRabbit.Transfer.Data.Context;
+using MicroRabbit.Domain.Core.Bus;
+using MicroRabbit.Tranfer.Domain.EventHandlers;
+using MicroRabbit.Tranfer.Domain.Events;
 
 namespace MicroRabbit.Transfer.Api
 {
@@ -51,6 +54,13 @@ namespace MicroRabbit.Transfer.Api
             DependencyContainer.RegisterServicesForTransfer(services);
         }
 
+        private void RegisterTransferHandlers(IApplicationBuilder app)
+        {
+            var service = app.ApplicationServices.GetService<IEventBus>();
+
+            service.Subscribe<TransferCreatedEvent, TransferCreatedEventHandler>();
+        }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -76,6 +86,8 @@ namespace MicroRabbit.Transfer.Api
             {
                 endpoints.MapControllers();
             });
+
+            RegisterTransferHandlers(app);
         }
     }
 }

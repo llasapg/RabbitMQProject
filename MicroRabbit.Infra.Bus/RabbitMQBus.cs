@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Linq;
 using RabbitMQ.Client.Events;
 using System.Diagnostics;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MicroRabbit.Infra.Bus
 {
@@ -20,22 +21,27 @@ namespace MicroRabbit.Infra.Bus
     public sealed class RabbitMQBus : IEventBus
     {
         #region Helpers
-        public RabbitMQBus(IMediator mediator)
+        public RabbitMQBus(IMediator mediator, IServiceScopeFactory serviceFactory)
         {
             _mediator = mediator;
             _handlers = new Dictionary<string, List<Type>>();
             _eventTypes = new List<Type>();
+            _serviceFactory = serviceFactory;
         }
         /// Related to the commands
         private readonly IMediator _mediator;
         /// <summary>
         /// Collection for handlers only
         /// </summary>
-        private readonly Dictionary<string ,List<Type>> _handlers; //string - event, List - handlers
+        private readonly Dictionary<string, List<Type>> _handlers; //string - event, List - handlers
         /// <summary>
         /// Collection for events only
         /// </summary>
         private readonly List<Type> _eventTypes;
+        /// <summary>
+        /// This is service for DI using Microsoft
+        /// </summary>
+        private readonly IServiceScopeFactory _serviceFactory;
         #endregion
 
         /// <summary>
@@ -137,12 +143,12 @@ namespace MicroRabbit.Infra.Bus
             {
                 using (var channel = connection.CreateModel())
                 {
-                    channel.QueueDeclare(queueName);
+                    channel.QueueDeclare(queueName, false, false, false, null);
 
                     // Use little bit different consumer for this purpose
                     var consumer = new AsyncEventingBasicConsumer(channel);
 
-                    consumer.Received += (sender, e) => ConsumerReceived(sender, e);
+                    consumer.Received += async (sender, e) => await ConsumerReceived(sender, e);
 
                     var result = consumer.Model.BasicConsume(queueName, true, consumer);
                 }
@@ -179,25 +185,33 @@ namespace MicroRabbit.Infra.Bus
         /// <returns></returns>
         private async Task ProcessEvent(string eventName, string message) // we pass eventName ( that can we use to get the handler name and message for the future process )
         {
-            if(!_handlers.ContainsKey(eventName)) // we check that we have this type of events and handlers for them
+            Trace.WriteLine($"Event received, event name - {eventName}, message - {message}");
+
+            if(_handlers.ContainsKey(eventName)) // we check that we have this type of events and handlers for them
             {
-                var handlers = _handlers[eventName];
-
-                foreach (var item in handlers)
+                using (var scope = _serviceFactory.CreateScope())
                 {
-                    var handler = Activator.CreateInstance(item); // this class is used for object creation ( Actiovator )
+                    var handlers = _handlers[eventName];
 
-                    if (handler == null)
+                    foreach (var item in handlers)
                     {
+                        //var handler = Activator.CreateInstance(item); // this class is used for object creation ( Actiovator )
+
+                        var handler = scope.ServiceProvider.GetService(item);
+
+                        Trace.WriteLine($"Handler of type - {handler.GetType()} was created");
+
                         var eventType = _eventTypes.SingleOrDefault(t => t.Name == eventName);
 
                         var @event = JsonConvert.DeserializeObject(message, eventType); // in this step we are creating object, that represents our event ( Deserealize to the given type of event )
+
+                        Trace.WriteLine($"Event was created, event type is - {@event.GetType()}");
 
                         var handlerType = typeof(IEventHandler<>).MakeGenericType(eventType); // we use this approach to get handler type with genetic
 
                         await (Task)handlerType.GetMethod("Handle").Invoke(handler, new object[] { @event });
                     }
-                }
+                }    
             }
         }
     }

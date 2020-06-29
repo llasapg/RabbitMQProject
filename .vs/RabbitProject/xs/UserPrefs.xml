@@ -1,68 +1,38 @@
-﻿<Properties StartupConfiguration="{6196C7A0-6A1E-4C97-86B5-E4686474B5CD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MicroRabbit.Infra.IoC/DependencyContainer.cs">
+﻿<Properties StartupConfiguration="Default">
+  <MonoDevelop.Ide.ItemProperties.Presentation.MicroRabbit.Presentation.App PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MicroRabbit.Presentation.App/Pages/Index.cshtml">
     <Files>
-      <File FileName="MicroRabbit.Transfer.Api/Startup.cs" Line="12" Column="1" />
-      <File FileName="MicroRabbit.Transfer.Data/Context/TransferDbContext.cs" Line="1" Column="1" />
-      <File FileName="MicroRabbit.Tranfer.Domain/Models/Transfer.cs" Line="4" Column="33" />
-      <File FileName="MicroRabbit.Tranfer.Domain/Interfaces/ITransferRepository.cs" Line="7" Column="41" />
-      <File FileName="MicroRabbit.Transfer.Data/Repository/TransferRepository.cs" Line="23" Column="1" />
-      <File FileName="MicroRabbit.Transfer.Application/Interfaces/ITransferService.cs" Line="7" Column="38" />
-      <File FileName="MicroRabbit.Transfer.Application/Services/TransferService.cs" Line="18" Column="1" />
-      <File FileName="MicroRabbit.Infra.IoC/DependencyContainer.cs" Line="30" Column="41" />
+      <File FileName="MicroRabbit.Transfer.Api/Startup.cs" Line="53" Column="10" />
+      <File FileName="MicroRabbit.Infra.IoC/DependencyContainer.cs" Line="48" Column="70" />
+      <File FileName="MicroRabbit.Presentation.App/Application/Interfaces/IRequestService.cs" Line="6" Column="37" />
+      <File FileName="MicroRabbit.Presentation.App/Application/Services/RequestService.cs" Line="6" Column="60" />
+      <File FileName="MicroRabbit.Presentation.App/appsettings.json" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Presentation.App/Startup.cs" Line="37" Column="1" />
+      <File FileName="MicroRabbit.Presentation.App/Pages/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Presentation.App/Pages/Error.cshtml" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Presentation.App/Pages/Index.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="RabbitProject" expanded="True">
-            <Node name="Domain" expanded="True">
-              <Node name="MicroRabbit.Domain.Core" expanded="True" />
-            </Node>
             <Node name="Infra.Bus" expanded="True">
               <Node name="MicroRabbit.Infra.Bus" expanded="True" />
             </Node>
             <Node name="Infra.IoC" expanded="True">
-              <Node name="MicroRabbit.Infra.IoC" expanded="True">
-                <Node name="DependencyContainer.cs" selected="True" />
-              </Node>
+              <Node name="MicroRabbit.Infra.IoC" expanded="True" />
             </Node>
-            <Node name="Microservices" expanded="True">
-              <Node name="Banking" expanded="True">
-                <Node name="API" expanded="True">
-                  <Node name="MicroRabbit.Banking.Api" expanded="True" />
-                </Node>
-                <Node name="Application" expanded="True" />
-                <Node name="Data" expanded="True">
-                  <Node name="MicroRabbit.Banking.Data" expanded="True">
-                    <Node name="Context" expanded="True" />
-                    <Node name="Repository" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
-              <Node name="Transfer" expanded="True">
-                <Node name="API" expanded="True">
-                  <Node name="MicroRabbit.Transfer.Api" expanded="True">
-                    <Node name="Properties" expanded="True" />
-                  </Node>
-                </Node>
+            <Node name="Presentation" expanded="True">
+              <Node name="MicroRabbit.Presentation.App" expanded="True">
                 <Node name="Application" expanded="True">
-                  <Node name="MicroRabbit.Transfer.Application" expanded="True">
-                    <Node name="Interfaces" expanded="True" />
-                    <Node name="Services" expanded="True" />
-                  </Node>
+                  <Node name="Interfaces" expanded="True" />
+                  <Node name="Services" expanded="True" />
                 </Node>
-                <Node name="Data" expanded="True">
-                  <Node name="MicroRabbit.Transfer.Data" expanded="True">
-                    <Node name="Context" expanded="True" />
-                    <Node name="Migrations" expanded="True" />
-                    <Node name="Repository" expanded="True" />
-                  </Node>
+                <Node name="Pages" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
                 </Node>
-                <Node name="Domain" expanded="True">
-                  <Node name="MicroRabbit.Tranfer.Domain" expanded="True">
-                    <Node name="Interfaces" expanded="True" />
-                    <Node name="Models" expanded="True" />
-                  </Node>
-                </Node>
+                <Node name="Properties" expanded="True" />
+                <Node name="wwwroot" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -77,7 +47,14 @@
       <Breakpoint file="/Users/llasapg/Desktop/RabbitProject/MicroRabbit.Banking.Domain/CommandHandlers/TestHandler.cs" relfile="MicroRabbit.Banking.Domain/CommandHandlers/TestHandler.cs" line="13" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
+      <Items>
+        <StartupItem ItemId="{465FB166-92FA-4AE7-84A6-59E02F603B3B}" ItemName="MicroRabbit.Banking.Api" ConfigurationId="Default" />
+        <StartupItem ItemId="{6196C7A0-6A1E-4C97-86B5-E4686474B5CD}" ItemName="MicroRabbit.Transfer.Api" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
   <MonoDevelop.Ide.ItemProperties.Microservices.Banking.API.MicroRabbit.Banking.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.Microservices.Transfer.API.MicroRabbit.Transfer.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
