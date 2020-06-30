@@ -6,4 +6,3 @@
 /Users/llasapg/Desktop/RabbitProject/MicroRabbit.Domain.Core/obj/Debug/netcoreapp3.1/MicroRabbit.Domain.Core.csproj.CoreCompileInputs.cache
 /Users/llasapg/Desktop/RabbitProject/MicroRabbit.Domain.Core/obj/Debug/netcoreapp3.1/MicroRabbit.Domain.Core.dll
 /Users/llasapg/Desktop/RabbitProject/MicroRabbit.Domain.Core/obj/Debug/netcoreapp3.1/MicroRabbit.Domain.Core.pdb
-/Users/llasapg/Desktop/RabbitProject/MicroRabbit.Domain.Core/obj/Debug/netcoreapp3.1/MicroRabbit.Domain.Core.csprojAssemblyReference.cache

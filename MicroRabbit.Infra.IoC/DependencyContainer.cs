@@ -23,7 +23,6 @@ namespace MicroRabbit.Infra.IoC
         {
             // Domain Bus ( EventBus realm )
             serviceCollection.AddSingleton<IEventBus, RabbitMQBus>();
-            // Event handlers
             // Repo
             serviceCollection.AddTransient<IAccountRepository, AccountRepository>();
             // Services

@@ -1,16 +1,24 @@
 ﻿<Properties StartupConfiguration="Default">
   <MonoDevelop.Ide.ItemProperties.Presentation.MicroRabbit.Presentation.App PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MicroRabbit.Presentation.App/Pages/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MicroRabbit.Presentation.App/Controllers/HomePageController.cs">
     <Files>
-      <File FileName="MicroRabbit.Transfer.Api/Startup.cs" Line="53" Column="10" />
-      <File FileName="MicroRabbit.Infra.IoC/DependencyContainer.cs" Line="48" Column="70" />
-      <File FileName="MicroRabbit.Presentation.App/Application/Interfaces/IRequestService.cs" Line="6" Column="37" />
-      <File FileName="MicroRabbit.Presentation.App/Application/Services/RequestService.cs" Line="6" Column="60" />
-      <File FileName="MicroRabbit.Presentation.App/appsettings.json" Line="1" Column="1" />
-      <File FileName="MicroRabbit.Presentation.App/Startup.cs" Line="37" Column="1" />
-      <File FileName="MicroRabbit.Presentation.App/Pages/_ViewImports.cshtml" Line="1" Column="1" />
-      <File FileName="MicroRabbit.Presentation.App/Pages/Error.cshtml" Line="1" Column="1" />
-      <File FileName="MicroRabbit.Presentation.App/Pages/Index.cshtml" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Banking.Api/Controllers/BankingController.cs" Line="23" Column="36" IsPinned="True" />
+      <File FileName="MicroRabbit.Presentation.App/Controllers/HomePageController.cs" Line="27" Column="41" IsPinned="True" />
+      <File FileName="MicroRabbit.Presentation.App/Views/HomePage/Index.cshtml" Line="9" Column="32" />
+      <File FileName="MicroRabbit.Presentation.App/Application/Interfaces/IRequestService.cs" Line="9" Column="6" />
+      <File FileName="MicroRabbit.Presentation.App/Startup.cs" Line="58" Column="31" />
+      <File FileName="MicroRabbit.Presentation.App/Domain/Models/TransferViewModel.cs" Line="2" Column="11" />
+      <File FileName="MicroRabbit.Presentation.App/Application/Services/RequestService.cs" Line="16" Column="1" />
+      <File FileName="MicroRabbit.Banking.Application/Services/AccountService.cs" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Banking.Domain/CommandHandlers/CreateTransferCommandHandler.cs" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Transfer.Api/Controllers/TransferController.cs" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Transfer.Application/Services/TransferService.cs" Line="1" Column="1" />
+      <File FileName="MicroRabbit.Infra.Bus/RabbitMQBus.cs" Line="114" Column="46" />
+      <File FileName="MicroRabbit.Presentation.App/Views/_Layout.cshtml" Line="7" Column="18" />
+      <File FileName="MicroRabbit.Presentation.App/Views/_ViewImports.cshtml" Line="2" Column="50" />
+      <File FileName="MicroRabbit.Presentation.App/Properties/launchSettings.json" Line="20" Column="29" />
+      <File FileName="MicroRabbit.Presentation.App/Program.cs" Line="16" Column="1" />
+      <File FileName="MicroRabbit.Infra.IoC/DependencyContainer.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,17 +30,59 @@
             <Node name="Infra.IoC" expanded="True">
               <Node name="MicroRabbit.Infra.IoC" expanded="True" />
             </Node>
+            <Node name="Microservices" expanded="True">
+              <Node name="Banking" expanded="True">
+                <Node name="API" expanded="True">
+                  <Node name="MicroRabbit.Banking.Api" expanded="True">
+                    <Node name="Controllers" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="Application" expanded="True">
+                  <Node name="MicroRabbit.Banking.Application" expanded="True">
+                    <Node name="Services" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="Data" expanded="True">
+                  <Node name="MicroRabbit.Banking.Data" expanded="True" />
+                </Node>
+                <Node name="Domain" expanded="True">
+                  <Node name="MicroRabbit.Banking.Domain" expanded="True">
+                    <Node name="CommandHandlers" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Transfer" expanded="True">
+                <Node name="API" expanded="True">
+                  <Node name="MicroRabbit.Transfer.Api" expanded="True">
+                    <Node name="Controllers" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="Application" expanded="True">
+                  <Node name="MicroRabbit.Transfer.Application" expanded="True">
+                    <Node name="Services" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="Data" expanded="True">
+                  <Node name="MicroRabbit.Transfer.Data" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
             <Node name="Presentation" expanded="True">
               <Node name="MicroRabbit.Presentation.App" expanded="True">
                 <Node name="Application" expanded="True">
                   <Node name="Interfaces" expanded="True" />
                   <Node name="Services" expanded="True" />
                 </Node>
-                <Node name="Pages" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
+                <Node name="Controllers" expanded="True">
+                  <Node name="HomePageController.cs" selected="True" />
+                </Node>
+                <Node name="Domain" expanded="True">
+                  <Node name="Models" expanded="True" />
                 </Node>
                 <Node name="Properties" expanded="True" />
-                <Node name="wwwroot" expanded="True" />
+                <Node name="Views" expanded="True">
+                  <Node name="HomePage" expanded="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
@@ -45,12 +95,15 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/llasapg/Desktop/RabbitProject/MicroRabbit.Banking.Domain/CommandHandlers/TestHandler.cs" relfile="MicroRabbit.Banking.Domain/CommandHandlers/TestHandler.cs" line="13" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/RabbitProject/MicroRabbit.Presentation.App/Controllers/HomePageController.cs" relfile="MicroRabbit.Presentation.App/Controllers/HomePageController.cs" line="28" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/RabbitProject/MicroRabbit.Banking.Api/Controllers/BankingController.cs" relfile="MicroRabbit.Banking.Api/Controllers/BankingController.cs" line="33" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations>
     <MultiItemSolutionRunConfiguration Id="Default" Name="Default">
       <Items>
         <StartupItem ItemId="{465FB166-92FA-4AE7-84A6-59E02F603B3B}" ItemName="MicroRabbit.Banking.Api" ConfigurationId="Default" />
+        <StartupItem ItemId="{8FD86AC7-DB8A-4CDC-90BF-70FA668AD9B4}" ItemName="MicroRabbit.Presentation.App" ConfigurationId="Default" />
         <StartupItem ItemId="{6196C7A0-6A1E-4C97-86B5-E4686474B5CD}" ItemName="MicroRabbit.Transfer.Api" ConfigurationId="Default" />
       </Items>
     </MultiItemSolutionRunConfiguration>

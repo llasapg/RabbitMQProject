@@ -1,0 +1,10 @@
+﻿@model TransferViewModel
+    <form asp-controller="HomePage" asp-action="CreateTransfer">
+        <label asp-for="FormAccount">Input from account</label>
+        <input asp-for="FormAccount" />
+        <label asp-for="ToAccount">Input to account</label>
+        <input asp-for="ToAccount" />
+        <label asp-for="Amount">Input total amount</label>
+        <input asp-for="Amount" />
+        <input type="submit" />
+    </form>

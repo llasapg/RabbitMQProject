@@ -28,14 +28,16 @@ namespace MicroRabbit.Presentation.App
         {
             services.AddRazorPages();
 
+            services.AddControllersWithViews();
+
             RegisterPresentationServices(services);
         }
 
         private void RegisterPresentationServices(IServiceCollection services)
         {
-            services.AddTransient<IRequestService, RequestService>();
+            services.AddHttpClient<IRequestService, RequestService>();
 
-            DependencyContainer.RegisterServicesForPresentation(services);
+            //DependencyContainer.RegisterServicesForPresentation(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +63,7 @@ namespace MicroRabbit.Presentation.App
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute("default", "{Controller}/{Action}", new { Controller = "HomePage", Action = "Index" }); 
             });
         }
     }

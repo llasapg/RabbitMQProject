@@ -5,6 +5,6 @@ namespace MicroRabbit.Presentation.App.Application.Interfaces
 {
     public interface IRequestService
     {
-        Task<string> SendRequest(string uri, HttpContent message);
+        Task<string> SendRequest(string uri, string message);
     }
 }
